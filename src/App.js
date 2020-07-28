@@ -13,7 +13,7 @@ function App() {
         videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
         url={dadosIniciais.categorias[0].videos[0].url}
         videoDescription={
-          "O que é Front-end? Trabalhando na área os termos HTML, CSS e JavaScript fazem parte da rotina das desenvolvedoras e desenvolvedores. Mas o que eles fazem, afinal? Descubra com a Vanessa!"
+          "Se liga nesse lugar insano que vai ter de competição de drone até simulador de caminhão: BARBARIUS. Eu e Cavaco fizemos a festa e zuamos muito no carrinho!"
         }
       />
 
@@ -24,10 +24,6 @@ function App() {
       <Carousel category={dadosIniciais.categorias[2]} />
 
       <Carousel category={dadosIniciais.categorias[3]} />
-
-      <Carousel category={dadosIniciais.categorias[4]} />
-
-      <Carousel category={dadosIniciais.categorias[5]} />
 
       <Footer />
     </div>
