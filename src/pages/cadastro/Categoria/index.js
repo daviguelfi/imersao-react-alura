@@ -1,20 +1,70 @@
-import React from "react";
+import React, { useState } from "react";
 import PageDefault from "../../../components/PageDefault";
 import { Link } from "react-router-dom";
+import FormField from "../../../components/FormField";
 
 function CadastroCategoria() {
+  const ValoresIniciais = {
+    nome: "",
+    descricao: "",
+    cor: "",
+  };
+
+  const [categorias, setCategorias] = useState([]);
+  const [values, setValues] = useState(ValoresIniciais);
+
+  function setValue(chave, valor) {
+    setValues({
+      ...values,
+      [chave]: valor,
+    });
+  }
+
+  function handleChange(e) {
+    setValue(e.target.getAttribute("name"), e.target.value);
+  }
+
   return (
     <PageDefault>
-      <h1>Cadastro de Categoria</h1>
+      <h1>Cadastro de Categoria: {values.nome}</h1>
 
-      <form>
-        <label>
-          Nome da Categoria:
-          <input type="text" />
-        </label>
+      <form
+        onSubmit={function handleSubmit(e) {
+          e.preventDefault();
+          setCategorias([...categorias, values]);
+
+          setValues(ValoresIniciais);
+        }}
+      >
+        <FormField
+          label="Nome da Categoria:"
+          name="nome"
+          type="text"
+          value={values.nome}
+          onChange={handleChange}
+        />
+        <FormField
+          label="Descrição"
+          name="descricao"
+          type="textarea"
+          value={values.descricao}
+          onChange={handleChange}
+        />
+        <FormField
+          label="Cor:"
+          name="cor"
+          type="color"
+          value={values.cor}
+          onChange={handleChange}
+        />
 
         <button>Cadastrar</button>
       </form>
+      <ul>
+        {categorias.map((categoria, index) => {
+          return <li key={`${categoria}${index}`}>{categoria.nome}</li>;
+        })}
+      </ul>
       <Link to="/">Voltar pra home</Link>
     </PageDefault>
   );
