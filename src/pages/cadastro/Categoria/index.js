@@ -15,7 +15,7 @@ function CadastroCategoria() {
   const [values, setValues] = useState(ValoresIniciais);
 
   useEffect(() => {
-    const URL = 'http://localhost:8080/categorias';
+    const URL = 'https://guelflix.herokuapp.com/categorias';
     fetch(URL).then(async (res) => {
       const resposta = await res.json();
       setCategorias([...resposta]);
