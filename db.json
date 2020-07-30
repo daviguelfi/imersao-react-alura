@@ -1,0 +1,22 @@
+{
+  "categorias": [
+    {
+      "id": 1,
+      "nome": "Canais no youtube",
+      "descricao": "Canais brabo do youtube",
+      "cor": "#6b5be2"
+    },
+    {
+      "id": 2,
+      "nome": "Podcast",
+      "descricao": "Canal brabo de podcast",
+      "cor": "#00C86F"
+    },
+    {
+      "id": 3,
+      "nome": "Filmes",
+      "descricao": "Alguns filmes ai",
+      "cor": "#00f0FF"
+    }
+  ]
+}
