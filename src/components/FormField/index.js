@@ -13,15 +13,16 @@ function FormField({
   const hasSuggestions = Boolean(suggestions.length);
   return (
     <FormFieldWrapper>
-      <Label>
+      <Label htmlFor={fieldId}>
         <Input
           as={tag}
+          id={fieldId}
           type={type}
           value={value}
           name={name}
           onChange={onChange}
           autoComplete={hasSuggestions ? 'off' : 'on'}
-          list={hasSuggestions ? `suggestionFor_${fieldId}` : 'on'}
+          list={hasSuggestions ? `suggestionFor_${fieldId}` : undefined}
         />
         <Label.Text>{label}</Label.Text>
         {hasSuggestions && (

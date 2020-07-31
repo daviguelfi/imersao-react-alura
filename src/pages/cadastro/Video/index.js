@@ -29,7 +29,7 @@ function CadastroVideo() {
       <form
         onSubmit={(event) => {
           event.preventDefault();
-          console.log('dentro do submit');
+
           const categoriaEscolhida = categorias.find(
             (categoria) => categoria.titulo === values.categoria
           );
@@ -37,10 +37,10 @@ function CadastroVideo() {
             .create({
               titulo: values.titulo,
               url: values.url,
-              categoriaEscolhida,
+              categoriaId: categoriaEscolhida.id,
             })
             .then(() => {
-              // history.push('/');
+              history.push('/');
             });
         }}
       >
@@ -52,13 +52,13 @@ function CadastroVideo() {
           onChange={handleChange}
         />
 
-        {/* <FormField
+        <FormField
           label="Url do Vídeo"
           name="url"
           type="text"
           value={values.url}
           onChange={handleChange}
-        /> */}
+        />
 
         <FormField
           label="Categoria"

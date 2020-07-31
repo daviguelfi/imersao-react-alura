@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
-
+*TO-DO* Ajust a db.json like a file _*dados_iniciais.json*_
 In the project directory, you can run:
 
 ### `npm start`

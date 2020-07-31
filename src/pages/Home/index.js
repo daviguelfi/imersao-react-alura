@@ -26,15 +26,15 @@ function Home() {
       {dadosIniciais.map((categoria, indice) => {
         if (indice === 0) {
           return (
-            <>
+            <div key={categoria.id}>
               <BannerMain
                 videoTitle={dadosIniciais[0].videos[0].titulo}
                 url={dadosIniciais[0].videos[0].url}
-                videoDescription="Se liga nesse lugar insano que vai ter de competição de drone até simulador de caminhão: BARBARIUS. Eu e Cavaco fizemos a festa e zuamos muito no carrinho!"
+                videoDescription={dadosIniciais[0].videos[0].description}
               />
 
               <Carousel ignoreFirstVideo category={dadosIniciais[0]} />
-            </>
+            </div>
           );
         }
         return <Carousel key={categoria.id} category={categoria} />;
