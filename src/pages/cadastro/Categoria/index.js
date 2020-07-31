@@ -3,16 +3,18 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
 
 function CadastroCategoria() {
-  const ValoresIniciais = {
+  const valoresIniciais = {
     nome: '',
     descricao: '',
     cor: '',
   };
 
+  const { handleChange, values, clearForm } = useForm(valoresIniciais);
+
   const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(ValoresIniciais);
 
   useEffect(() => {
     const URL = 'https://guelflix.herokuapp.com/categorias';
@@ -21,17 +23,6 @@ function CadastroCategoria() {
       setCategorias([...resposta]);
     });
   }, []);
-
-  function setValue(chave, valor) {
-    setValues({
-      ...values,
-      [chave]: valor,
-    });
-  }
-
-  function handleChange(e) {
-    setValue(e.target.getAttribute('name'), e.target.value);
-  }
 
   return (
     <PageDefault>
@@ -44,7 +35,7 @@ function CadastroCategoria() {
         onSubmit={function handleSubmit(e) {
           e.preventDefault();
           setCategorias([...categorias, values]);
-          setValues(ValoresIniciais);
+          clearForm(valoresIniciais);
         }}
       >
         <FormField
