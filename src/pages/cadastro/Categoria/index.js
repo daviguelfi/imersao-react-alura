@@ -13,11 +13,12 @@ function CadastroCategoria() {
   };
 
   const { handleChange, values, clearForm } = useForm(valoresIniciais);
-
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
-    const URL = 'https://guelflix.herokuapp.com/categorias';
+    const URL = window.location.hostname.includes('localhost')
+      ? 'http://localhost:8080/categorias'
+      : 'https://devsoutinhoflix.herokuapp.com/categorias';
     fetch(URL).then(async (res) => {
       const resposta = await res.json();
       setCategorias([...resposta]);
@@ -26,10 +27,7 @@ function CadastroCategoria() {
 
   return (
     <PageDefault>
-      <h1>
-        Cadastro de Categoria:
-        {values.nome}
-      </h1>
+      <h1>Cadastro de Categoria</h1>
 
       <form
         onSubmit={function handleSubmit(e) {
@@ -45,20 +43,20 @@ function CadastroCategoria() {
           value={values.nome}
           onChange={handleChange}
         />
-        <FormField
+        {/* <FormField
           label="Descrição"
           name="descricao"
           type="textarea"
           value={values.descricao}
           onChange={handleChange}
-        />
-        <FormField
+        /> */}
+        {/* <FormField
           label="Cor"
           name="cor"
           type="color"
           value={values.cor}
           onChange={handleChange}
-        />
+        /> */}
 
         <Button>Cadastrar</Button>
       </form>
@@ -67,10 +65,12 @@ function CadastroCategoria() {
 
       <ul>
         {categorias.map((categoria) => (
-          <li key={`${categoria.nome}`}>{categoria.nome}</li>
+          <li key={`${categoria.titulo}`}>{categoria.titulo}</li>
         ))}
       </ul>
-      <Link to="/">Voltar pra home</Link>
+      <Button>
+        <Link to="/">Voltar pra home</Link>
+      </Button>
     </PageDefault>
   );
 }

@@ -12,9 +12,9 @@ function CadastroVideo() {
   const categoryTitles = categorias.map(({ titulo }) => titulo);
   const history = useHistory();
   const { handleChange, values } = useForm({
-    titulo: 'Titulo padrão',
-    url: 'https://www.youtube.com/watch?v=QBNMKPJ74uw',
-    categoria: 'Front end',
+    titulo: '',
+    url: '',
+    categoria: '',
   });
 
   useEffect(() => {
@@ -22,7 +22,6 @@ function CadastroVideo() {
       setCategorias(categoriasFromServer);
     });
   }, []);
-  console.log(categoryTitles);
   return (
     <PageDefault>
       <h1>Cadastro de Video</h1>
@@ -30,8 +29,8 @@ function CadastroVideo() {
       <form
         onSubmit={(event) => {
           event.preventDefault();
+          console.log('dentro do submit');
           const categoriaEscolhida = categorias.find(
-            // eslint-disable-next-line comma-dangle
             (categoria) => categoria.titulo === values.categoria
           );
           videosRepository
@@ -41,7 +40,7 @@ function CadastroVideo() {
               categoriaEscolhida,
             })
             .then(() => {
-              history.push('/');
+              // history.push('/');
             });
         }}
       >
@@ -53,13 +52,13 @@ function CadastroVideo() {
           onChange={handleChange}
         />
 
-        <FormField
+        {/* <FormField
           label="Url do Vídeo"
           name="url"
           type="text"
           value={values.url}
           onChange={handleChange}
-        />
+        /> */}
 
         <FormField
           label="Categoria"
