@@ -49,8 +49,8 @@ function CadastroCategoria() {
           type="textarea"
           value={values.descricao}
           onChange={handleChange}
-        /> */}
-        {/* <FormField
+        />
+        <FormField
           label="Cor"
           name="cor"
           type="color"
@@ -58,7 +58,7 @@ function CadastroCategoria() {
           onChange={handleChange}
         /> */}
 
-        <Button>Cadastrar</Button>
+        <Button type="submit">Cadastrar</Button>
       </form>
 
       {categorias.length === 0 && <div>Carregando...</div>}
@@ -68,9 +68,8 @@ function CadastroCategoria() {
           <li key={`${categoria.titulo}`}>{categoria.titulo}</li>
         ))}
       </ul>
-      <Button>
-        <Link to="/">Voltar pra home</Link>
-      </Button>
+
+      <Link to="/">Voltar pra home</Link>
     </PageDefault>
   );
 }
